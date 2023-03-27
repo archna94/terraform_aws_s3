@@ -7,6 +7,15 @@
 
 # Crash log files
 crash.log
+.terraform
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.lock.hcl
+uat-out.json
+*.txt
+log
+*.zip
+*.json
 
 # Ignore any .tfvars files that are generated automatically for each Terraform run. Most
 # .tfvars files are managed as part of configuration and so should be included in
