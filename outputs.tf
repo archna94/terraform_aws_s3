@@ -3,7 +3,7 @@ output "s3_bucket_id" {
   value       = try( aws_s3_bucket.this[0].id, "")
 }
 
-output "s3_bucket_arn" {
+output "s3_arn" {
   description = "The ARN of the bucket. Will be of format arn:aws:s3:::bucketname."
   value       = try(aws_s3_bucket.this[0].arn, "")
 }
