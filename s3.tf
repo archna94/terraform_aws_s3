@@ -28,7 +28,7 @@ resource "aws_s3_bucket" "this" {
 
   resource "aws_s3_bucket_notification" "notification" {
     count = var.create_bucket_notification ? 1 : 0
-    bucket = aws_s3_bucket.this[0].id
+    bucket = var.s3_bucket_id
     queue {
     queue_arn     = var.sqs_arn
     events        = ["s3:ObjectCreated:*"]

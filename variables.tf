@@ -58,6 +58,12 @@ variable "create_bucket_notification" {
   type        = bool
   default     = "false"
 }
+
+variable "s3_bucket_id" {
+  description = "name of bucket id"
+  type = string
+  default = ""
+}
 variable "sqs_arn" {
   description = "arn of sqs service"
   type        = string
