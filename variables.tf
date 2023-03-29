@@ -4,15 +4,15 @@ variable "region" {
 }
 variable "create_s3" {
   type = bool
-  default = false
+  default = true
 }
 variable "environment" {
   type = string
-  default = ""  
+  default = "dev"  
 }
 variable "s3_name"{
   type = string
-  default = ""
+  default = "kmnhgf"
 }
 variable "tags" {
   description = "Tag map for the resource"
@@ -21,7 +21,7 @@ variable "tags" {
 }
 variable "create_block_public_access" {
   type = bool
-  default = false
+  default = true
 }
 variable "block_public_acls" {
   description = "Whether Amazon S3 should block public ACLs for this bucket."
@@ -40,6 +40,51 @@ variable "ignore_public_acls" {
 }
 variable "restrict_public_buckets" {
   description = "Whether Amazon S3 should restrict public bucket policies for this bucket."
+  type        = bool
+  default     = true
+}
+variable "create_canned_acl" {
+  description = "Whether to use a canned ACL."
+  type        = bool
+  default = true
+}
+
+variable "canned_acl" {
+  description = "The canned ACL to apply to the bucket."
+  type        = string
+  default     = "private"
+
+  validation {
+    condition = contains([
+      "private",
+      "public-read",
+      "public-read-write",
+      "aws-exec-read",
+      "authenticated-read",
+      "bucket-owner-read",
+      "bucket-owner-full-control",
+      "log-delivery-write",
+    ], var.canned_acl)
+
+    error_message = "Canned ACL not one of the allowed types."
+  }
+}
+variable "lifecycle_rules" {
+  type = list(object({
+    id     = string,
+    status = string,
+
+    noncurrent_version_transition = optional(list(object({
+      noncurrent_days = number
+      storage_class   = string
+    })), [])
+  }))
+
+  default = []
+}
+
+variable "versioning_enabled" {
+  description = "Whether versioning is enabled for bucket objects."
   type        = bool
   default     = true
 }
