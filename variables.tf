@@ -12,7 +12,7 @@ variable "environment" {
 }
 variable "s3_name"{
   type = string
-  default = "kmnhgf"
+  default = "demo9876543"
 }
 variable "tags" {
   description = "Tag map for the resource"
