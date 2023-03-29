@@ -1,6 +1,6 @@
 variable "region" {
   type = string
-  default = "eu-west-2"
+  default = "eu-west-1"
 }
 variable "create_s3" {
   type = bool
@@ -12,7 +12,7 @@ variable "environment" {
 }
 variable "s3_name"{
   type = string
-  default = "kmnhgf"
+  default = "demo9876543"
 }
 variable "tags" {
   description = "Tag map for the resource"
