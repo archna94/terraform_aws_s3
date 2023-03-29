@@ -1,6 +1,6 @@
 variable "region" {
   type = string
-  default = "eu-west-2"
+  default = "eu-west-1"
 }
 variable "create_s3" {
   type = bool
@@ -86,7 +86,7 @@ variable "lifecycle_rules" {
 variable "versioning_enabled" {
   description = "Whether versioning is enabled for bucket objects."
   type        = bool
-  default     = true
+  default     = false
 }
 variable "s3_enable_encryption" {
   description = "Determines whether encryption will be created (affects all resources)"
