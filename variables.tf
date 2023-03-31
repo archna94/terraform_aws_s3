@@ -20,7 +20,7 @@ variable "environment" {
 variable "s3_name"{
   description = "The name of the bucket"
   type = string
-  default = "demo9876543"
+  default = "aademo9876543"
 }
 variable "tags" {
   description = "Tag map for the resource"
@@ -110,12 +110,12 @@ variable "s3_kms_master_key_id" {
 variable "create_bucket_notification" {
   description = "Determines whether bucket notification will be created (affects all resources)"
   type        = bool
-  default     = false
+  default     = true
 }
 variable "create_s3_sqs_notification" {
   description = "Determines whether s3-sqs notification will be created"
   type = bool
-  default = false
+  default = true
 }
 variable "create_s3_sns_notification" {
   description = "Determines whether s3-sns notification will be created"
@@ -131,12 +131,12 @@ variable "create_s3_lambda_notification" {
 variable "s3_bucket_id" {
   description = "name of bucket id"
   type = string
-  default = ""
+  default = "dev-aademo9876543"
 }
 variable "queue_arn" {
   description = "arn of sqs service"
   type        = string
-  default =  ""
+  default =  "arn:aws:sqs:eu-west-1:859662211748:dev-demosqs"
 }
 variable "sns_arn" {
   description = "arn of sns service"
