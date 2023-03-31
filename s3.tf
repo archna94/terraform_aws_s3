@@ -59,7 +59,7 @@ resource "aws_s3_bucket_versioning" "default" {
   }
 }
 
- resource "aws_s3_bucket_notification" "s3-sqs-notification" {
+resource "aws_s3_bucket_notification" "s3-sqs-notification" {
   count = var.create_s3_sqs_notification ? 1 : 0
   bucket = var.s3_bucket_id
   queue {
