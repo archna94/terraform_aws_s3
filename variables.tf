@@ -35,7 +35,7 @@ variable "create_block_public_access" {
 variable "block_public_acls" {
   description = "Whether Amazon S3 should block public ACLs for this bucket."
   type        = bool
-  default     = true
+  default     = false
 }
 variable "block_public_policy" {
   description = "Whether Amazon S3 should block public bucket policies for this bucket."
@@ -55,7 +55,7 @@ variable "restrict_public_buckets" {
 variable "create_canned_acl" {
   description = "Whether to use a canned ACL."
   type        = bool
-  default = true
+  default = false
 }
 
 variable "canned_acl" {
@@ -110,7 +110,7 @@ variable "s3_kms_master_key_id" {
 variable "create_bucket_notification" {
   description = "Determines whether bucket notification will be created (affects all resources)"
   type        = bool
-  default     = "false"
+  default     = false
 }
 variable "create_s3_sqs_notification" {
   description = "Determines whether s3-sqs notification will be created"
