@@ -1,16 +1,24 @@
 variable "region" {
+  description = "name of the aws region"
   type = string
   default = "eu-west-1"
 }
 variable "create_s3" {
+  description = "Controls S3 bucket should be created or not"
   type = bool
   default = true
 }
 variable "environment" {
-  type = string
-  default = "dev"  
+  description = "The environment to deploy to."
+  type        = string
+  default     = "dev"
+  validation {
+    condition     = contains(["dev", "prod", "sit", "snd", "uat"], var.environment)
+    error_message = "Valid values for var: environment are (dev, prod, sit, snd, uat)."
+  }
 }
 variable "s3_name"{
+  description = "The name of the bucket"
   type = string
   default = "demo9876543"
 }
@@ -20,6 +28,7 @@ variable "tags" {
   default     = {}
 }
 variable "create_block_public_access" {
+  description = "create block public access"
   type = bool
   default = true
 }
@@ -99,9 +108,24 @@ variable "s3_kms_master_key_id" {
   default = ""
 }
 variable "create_bucket_notification" {
-  description = "Determines whether encryption will be created (affects all resources)"
+  description = "Determines whether bucket notification will be created (affects all resources)"
   type        = bool
   default     = "false"
+}
+variable "create_s3_sqs_notification" {
+  description = "Determines whether s3-sqs notification will be created"
+  type = bool
+  default = false
+}
+variable "create_s3_sns_notification" {
+  description = "Determines whether s3-sns notification will be created"
+  type = bool
+  default = false
+}
+variable "create_s3_lambda_notification" {
+  description = "Determines whether s3-lambda notification will be created"
+  type = bool
+  default = false
 }
 
 variable "s3_bucket_id" {
@@ -109,8 +133,18 @@ variable "s3_bucket_id" {
   type = string
   default = ""
 }
-variable "sqs_arn" {
+variable "queue_arn" {
   description = "arn of sqs service"
+  type        = string
+  default =  ""
+}
+variable "sns_arn" {
+  description = "arn of sns service"
+  type        = string
+  default =  ""
+}
+variable "lambda_arn" {
+  description = "arn of lambda service"
   type        = string
   default =  ""
 }
